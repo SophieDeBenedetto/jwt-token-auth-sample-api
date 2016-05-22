@@ -9,11 +9,23 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     user = User.new(user_params)
     if user.save
       head :ok
     else
-      render json: user.errors
+      errors = {
+        "errors": [
+          {
+            "status": "400",
+            "title": "registration failure",
+            "detail": "#{user.errors.messages}"
+          }
+        ]
+      }
+      binding.pry
+
+      render json: errors, status: 400
     end
   end
 
@@ -25,3 +37,4 @@ class UsersController < ApplicationController
 
 
 end
+
