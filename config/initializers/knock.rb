@@ -85,5 +85,5 @@ Knock.setup do |config|
   # config.token_public_key = nil
 end
 
-Knock.resource = :auth
-Knock.handle_attr = :email
+# Knock.resource = :auth
+# Knock.handle_attr = :email
