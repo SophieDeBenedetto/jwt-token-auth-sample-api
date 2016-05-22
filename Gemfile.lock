@@ -1,3 +1,13 @@
+GIT
+  remote: git@github.com:StevenNunez/knock.git
+  revision: ac7081e4da1ab1fd6791ded572524b4fdfedd686
+  branch: pluggable-resource
+  specs:
+    knock (1.4.2)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -24,6 +34,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.10.0)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
     activejob (5.0.0.rc1)
       activesupport (= 5.0.0.rc1)
       globalid (>= 0.3.6)
@@ -51,13 +65,9 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     jwt (1.5.4)
-    knock (1.4.2)
-      bcrypt (~> 3.1)
-      jwt (~> 1.5)
-      rails (>= 4.2)
-    listen (3.0.7)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9.7)
+    listen (3.0.8)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -138,8 +148,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
+  bcrypt (~> 3.1.7)
   byebug
-  knock
+  knock!
   listen (~> 3.0.5)
   pg (~> 0.18)
   pry-rails
