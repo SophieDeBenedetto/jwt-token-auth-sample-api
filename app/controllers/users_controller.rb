@@ -11,8 +11,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      binding.pry
-      render json: {email: user.email, password: user.password}
+      head :ok
     else
       render json: user.errors
     end
