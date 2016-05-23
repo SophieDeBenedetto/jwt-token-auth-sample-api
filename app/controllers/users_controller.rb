@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate, only: [:create]
+  skip_before_action :authenticate, only: [:create]
   def index
     render json: User.all
   end
@@ -13,32 +13,7 @@ class UsersController < ApplicationController
     if user.save
       head :ok
     else
-      errors = {
-        "errors": [
-          {
-            "detail": "email isn't valid",
-            "source": {
-              "pointer": "user/email"
-            }
-          },
-          {
-            detail: "pasword and password confirmation don't match",
-            source: {
-              "pointer": "user/password"
-            }
-          }
-        ]
-      }
-
-      # errors = {
-      #   "errors": [
-      #     {
-      #       "status": "400",
-      #       "title": "registration failure",
-      #       "detail": user.errors.messages
-      #     }
-      #   ]
-      # }
+      errors = user.generate_json_api_error
       render json: errors, status: 422
     end
   end
@@ -51,25 +26,4 @@ class UsersController < ApplicationController
 
 
 end
-
-
-
-
-
-# {
-#   "errors": [
-#     {
-#       "detail": "email isn't valid",
-#       "source": {
-#         "pointer": "data/attributes/email"
-#       }
-#     },
-#     {
-#       detail: "pasword and password confirmation don't match",
-#       source: {
-#         "pointer": "data/attributes/password"
-#       }
-#     }
-#   ]
-# }
 
