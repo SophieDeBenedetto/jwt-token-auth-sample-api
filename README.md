@@ -1,24 +1,5 @@
-# README
+# JWT Auth Sample App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project demonstrates one implementation of JWT auth in Rails using the [Knock gem](https://github.com/nsarno/knock). This app is a Rails 5 API that serves data to a seperate Ember application, found [here](https://github.com/SophieDeBenedetto/jwt-token-auth-sample-front).  
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To learn more about this project, check out [my blog post](coming soon!). 
