@@ -17,10 +17,12 @@ gem 'active_model_serializers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'jwt'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
-gem 'knock'
+gem 'figaro'
+# gem 'knock'
 # gem 'knock', git: "git@github.com:StevenNunez/knock.git", branch: "pluggable-resource"
 
 group :development, :test do
