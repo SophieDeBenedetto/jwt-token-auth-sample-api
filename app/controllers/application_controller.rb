@@ -7,8 +7,8 @@ class ApplicationController < ActionController::API
 
   def current_user
     if auth_present?
-      user = User.find_by(email: auth["email"])
-      if user.authenticate(auth["password"])
+      user = User.find(auth["user"])
+      if user
         @current_user ||= user
       end
     end
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   private
 
     def token
-      request.env["HTTP_AUTHORIZATION"].split(" ").last
+      request.env["HTTP_AUTHORIZATION"].scan(/Bearer (.*)$/).flatten.last
     end
 
     def auth
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::API
     end
 
     def auth_present?
-      !!request.env["HTTP_AUTHORIZATION"]
+      !!request.env.fetch("HTTP_AUTHORIZATION", "").scan(/Bearer/).flatten.first
     end
 end
 
