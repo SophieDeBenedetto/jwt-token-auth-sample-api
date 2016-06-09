@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate
-    render json: {error: 404} unless logged_in?
+    render json: {error: "unauthorized"}, status: 404 unless logged_in?
   end
 
   private
