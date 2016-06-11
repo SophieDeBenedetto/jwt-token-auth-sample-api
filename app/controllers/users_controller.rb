@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ErrorSerializer
   skip_before_action :authenticate, only: [:create]
   def index
     render json: User.all
