@@ -3,7 +3,7 @@ require 'jwt'
 
 describe UsersController , :type => :api do
 
-  let!(:user) { User.create(email: "sophie@email.com", password: "password") }
+  let!(:user) { User.create(email: "sophie@email.com", password: "password", password_confirmation: "password") }
 
   it "making a request without cookie token " do
     get "/users",:format =>:json
