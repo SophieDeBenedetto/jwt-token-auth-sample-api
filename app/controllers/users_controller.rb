@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  include ErrorSerializer
   skip_before_action :authenticate, only: [:create]
+  
+
   def index
     render json: User.all
   end
@@ -13,8 +16,7 @@ class UsersController < ApplicationController
     if user.save
       render json: {}, status: 200
     else
-      errors = user.generate_json_api_error
-      render json: errors, status: 422
+      render json: ErrorSerializer.serialize(user.errors), status: 422
     end
   end
 
