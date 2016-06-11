@@ -10,7 +10,7 @@ describe UsersController , :type => :api do
   # let!(:user) { User.create(email: "sophie@email.com", password: "password") }
   
   describe "registration" do 
-    it "returns a JsonAPI-friendly error object when user cannot be created" do
+    it "returns a JSONAPI-friendly error object when user cannot be created" do
       post "/users", {user: {email: "sophie@email", password: "missing conf"}},:format =>:json
       expect(last_response.status).to eq(422)
       expect(last_response.body).to eq(error.to_json)
