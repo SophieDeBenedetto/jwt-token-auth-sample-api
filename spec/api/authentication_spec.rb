@@ -10,17 +10,14 @@ describe UsersController , :type => :api do
     get "/users",:format =>:json
     last_response.status.should eql(401)
     error = {:error=>'unauthorized'}
-    binding.pry
     expect(last_response.body).to eq(error.to_json)
   end
 
   it "making an authenticated request" do
-  binding.pry 
     token = Knock::AuthToken.new(payload: {email: user.email, password: user.password}).token
     header "Authorization", "Bearer #{token}"
     # request.env['HTTP_AUTHORIZATION'] = "Bearer #{token}"
     get "/users", format: :json
-    binding.pry
   end
 
 end  
